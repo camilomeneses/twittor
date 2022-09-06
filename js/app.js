@@ -1,6 +1,14 @@
+let url = window.location.href;
+let swLocation = '/twittor/sw.js';
+
 // registrando serviceworker
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('sw.js');
+
+  if(url.includes('localholst')){
+    swLocation = '/sw.js';
+  }
+
+  navigator.serviceWorker.register(swLocation);
 }
 
 // Referencias de jQuery
@@ -114,4 +122,5 @@ postBtn.on('click', function () {
 
   crearMensajeHTML(mensaje, usuario);
 });
+
 
